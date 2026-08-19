@@ -841,6 +841,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .wx em{font-style:normal;font-size:9.5px;opacity:.7;font-weight:700}
   .wx.wx-warn{background:#fdf3da;color:#96700c}
   .wx.wx-rain{background:#e6eefb;color:#2b4f8f}
+  .fchip2{font-size:10.5px;font-weight:700;border-radius:6px;padding:2px 7px;white-space:nowrap}
+  .fact{margin:6px 0 0;font-size:11.5px;color:#5b6b7c;line-height:1.5;background:#fafbfc;
+    border-left:3px solid #ccd6de;border-radius:0 8px 8px 0;padding:6px 9px}
+  .fact b{display:block;font-size:11px;margin-bottom:2px;letter-spacing:-.2px}
   .wxdet{margin:6px 0 0;font-size:11px;color:#6f8090;background:#f7fafd;border-radius:8px;padding:5px 8px;
     display:flex;gap:9px;flex-wrap:wrap}
   .wxdet b{color:#3b6ea8;font-weight:700}
@@ -940,7 +944,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <header class="top" id="hdr">
     <div class="top-row">
       <h1>2026 제주도 휴가 · 2박 3일
-        <span class="sub">제주신라호텔(중문) · 렌터카 · 오프라인에서도 전부 동작 <b style="opacity:.75;font-weight:700">· build 2026-08-19b</b></span>
+        <span class="sub">제주신라호텔(중문) · 렌터카 · 오프라인에서도 전부 동작 <b style="opacity:.75;font-weight:700">· build 2026-08-19c</b></span>
       </h1>
       <button class="fbtn" id="fbtn">✈︎ 항공편 · 날씨</button>
       <div class="flights" id="flights">
@@ -1031,111 +1035,112 @@ const PARTS = {
 
 const STOPS = [
 /* ================= DAY 1 · 8/20 (목) ================= */
-{day:1,n:1,part:'오전',time:'10:10',stay:'약 30분',name:'제주국제공항 도착 · 렌터카 수령',short:'제주공항 도착',crowd:'airport',crowdNote:'오전 도착편이 몰리는 09~10시가 공항 피크입니다. 렌터카 하우스 셔틀 대기가 길어질 수 있어 30분을 잡아뒀습니다.',lat:33.5069232,lng:126.4929933,kind:'move',
+{day:1,n:1,part:'오전',time:'10:10',stay:'약 30분',name:'제주국제공항 도착 · 렌터카 수령',book:{lv:'yes',label:'렌터카 예약 확인',txt:'예약 바우처와 운전면허증을 미리 꺼내두세요. 성수기엔 인수 대기가 10~15분입니다.'},parking:{lv:'na',label:'렌터카 하우스',txt:'공항 주차장이 아니라 렌터카 업체 셔틀을 타고 하우스에서 인수합니다. 주차 개념이 없습니다.'},short:'제주공항 도착',crowd:'airport',crowdNote:'오전 도착편이 몰리는 09~10시가 공항 피크입니다. 렌터카 하우스 셔틀 대기가 길어질 수 있어 30분을 잡아뒀습니다.',lat:33.5069232,lng:126.4929933,kind:'move',
  desc:'수하물 수취 + 렌터카 하우스 셔틀 + 인수까지 30분 잡으면 넉넉합니다. 10:40 출발이 목표.',
  tips:['성수기엔 렌터카 셔틀 대기가 10~15분','출발 전 기름 게이지·하이패스 확인']},
 
-{day:1,n:2,part:'오전',time:'10:55',stay:'약 25분',name:'빵귿 (소금빵) 🥐',short:'빵귿',crowd:'bakery',crowdNote:'10:30 오픈 직후가 명란시오빵·바질시오빵 재고가 가장 많은 시간입니다. 점심 이후엔 인기 빵부터 빠지고 웨이팅도 붙습니다.',lat:33.4871073,lng:126.5351147,kind:'cafe',src:'new',
+{day:1,n:2,part:'오전',time:'10:55',stay:'약 25분',name:'빵귿 (소금빵) 🥐',book:{lv:'none',label:'예약 시스템 없음',txt:'베이커리라 예약이 없습니다. 줄이 있으면 그냥 서면 되고, 10:30 오픈 직후라 길지 않습니다.'},parking:{lv:'pub',label:'앞 공영주차장',txt:'매장 바로 앞에 공영주차장이 있습니다. 주말엔 금방 만석이지만 <b>8/20은 목요일</b>이라 여유가 있습니다. 골목 갓길에 잠깐 대고 다녀오는 사람도 많습니다.'},short:'빵귿',crowd:'bakery',crowdNote:'10:30 오픈 직후가 명란시오빵·바질시오빵 재고가 가장 많은 시간입니다. 점심 이후엔 인기 빵부터 빠지고 웨이팅도 붙습니다.',lat:33.4871073,lng:126.5351147,kind:'cafe',src:'new',
  desc:'제주시 이도이동 구남동6길. <b>시오빵(소금빵)</b>으로 유명한 제주 빵지순례 필수 코스 — 명란시오빵 · 바질시오빵이 시그니처입니다.',
  tips:['영업 10:30~19:00 · 비행기 도착(10:10)과 맞물려 오픈 직후 방문이 가능합니다','전용 주차장이 없어 근처 공영주차장 이용 → 주차 시간까지 25분 잡았습니다','호텔 방에서 먹을 빵 + 다음날 아침용으로 넉넉히'],
  warn:'📍 공항 기준 <b>동쪽</b> 15분이라 오늘 가는 서쪽 방향과는 반대입니다. 왕복 약 30분이 추가되는데, 첫날은 마감 시간이 없어 감당 가능한 범위입니다. 빡빡하게 느껴지면 <b>협재해수욕장(5번)을 생략</b>하면 원래 시각으로 정확히 돌아옵니다.'},
 
-{day:1,n:3,part:'오전',time:'11:50',stay:'약 1시간',name:'제주나기 애월본점',short:'제주나기',crowd:'restaurant',crowdNote:'12~13시에 지수 95로 치솟습니다. 11:50 도착은 피크 직전이라 아직 웨이팅이 짧은 구간입니다.',lat:33.4756753,lng:126.3777662,kind:'food',src:'doc',
+{day:1,n:3,part:'오전',time:'11:50',stay:'약 1시간',name:'제주나기 애월본점',book:{lv:'yes',label:'네이버 예약 가능',txt:'<b>네이버 예약</b>이 열려 있습니다. 출발 전이나 공항에서 미리 걸어두면 웨이팅을 건너뜁니다. 브레이크타임 15:00~17:00 주의.'},parking:{lv:'free',label:'매장 앞 주차장',txt:'매장 앞 전용 주차장이 있습니다.'},short:'제주나기',crowd:'restaurant',crowdNote:'12~13시에 지수 95로 치솟습니다. 11:50 도착은 피크 직전이라 아직 웨이팅이 짧은 구간입니다.',lat:33.4756753,lng:126.3777662,kind:'food',src:'doc',
  desc:'첨부 리스트의 “나기”. 장어덮밥 · 간장새우 · 간장전복. 빵귿에서 30분, 서쪽 루트의 출발점.',
  tips:['수요일 정기휴무 → 8/20(목)은 영업','빵귿을 넣으면서 11:15 → 11:50으로 밀렸습니다. 12시 전 도착이 마지노선','도착 즉시 웨이팅 등록하고 구엄포구 잠깐 구경']},
 
-{day:1,n:4,part:'오후',time:'13:05',stay:'약 30분',name:'한담해안산책로',crowd:'walk',crowdNote:'해안 산책로는 17~19시가 가장 붐빕니다. 한낮인 12~13시는 더위 때문에 오히려 한산해서 사진 찍기 편합니다.',lat:33.4590382,lng:126.3105110,kind:'spot',src:'new',
+{day:1,n:4,part:'오후',time:'13:05',stay:'약 30분',name:'한담해안산책로',parking:{lv:'free',label:'한담공원 무료',txt:'<b>한담공원 무료주차장</b>을 쓰세요. 애월 카페거리 주차장은 유료(4~5천원)에 오전 10시 이후 만차가 잦습니다.'},crowd:'walk',crowdNote:'해안 산책로는 17~19시가 가장 붐빕니다. 한낮인 12~13시는 더위 때문에 오히려 한산해서 사진 찍기 편합니다.',lat:33.4590382,lng:126.3105110,kind:'spot',src:'new',
  desc:'애월 에메랄드 해안을 따라 걷는 짧은 코스. 커플 사진은 여기가 제일 잘 나옵니다.',
  tips:['곽지과물해변 무료 주차장 이용','8월 정오는 뜨거우니 모자·물 필수']},
 
-{day:1,n:5,part:'오후',time:'13:45',stay:'약 50분',name:'해지개',crowd:'cafe',crowdNote:'애월 오션뷰 카페는 13~16시가 정점입니다. 도착하자마자 2층·루프탑 자리부터 확인하세요.',lat:33.4642028,lng:126.3090123,kind:'cafe',src:'doc',
+{day:1,n:5,part:'오후',time:'13:45',stay:'약 50분',name:'해지개',book:{lv:'none',label:'예약 없음',txt:'카페라 바로 입장합니다. 자리만 경쟁.'},parking:{lv:'free',label:'전용 · 2시간 무료',txt:'전용 주차장이 크고 <b>2시간 무료</b>입니다. 애월 카페거리 주차난을 통째로 피할 수 있어서 이 시간대 카페로 고른 이유이기도 합니다.'},crowd:'cafe',crowdNote:'애월 오션뷰 카페는 13~16시가 정점입니다. 도착하자마자 2층·루프탑 자리부터 확인하세요.',lat:33.4642028,lng:126.3090123,kind:'cafe',src:'doc',
  desc:'첨부 리스트의 “애월 해지개”. 애월 오션뷰 카페 — 커피 마시며 체크인 시간까지 텀 조절.',
  tips:['2층 창가 또는 루프탑이 뷰 포인트','한담산책로에서 차로 3분']},
 
-{day:1,n:6,part:'오후',time:'15:05',stay:'약 20분',name:'협재해수욕장 (드라이브 스톱)',short:'협재해수욕장',crowd:'beach',crowdNote:'8월 해수욕장은 11~15시가 최고 피크입니다. 15시 도착도 아직 붐비니 주차장 진입에 시간을 조금 더 보세요.',lat:33.3943224,lng:126.2398900,kind:'spot',src:'new',
+{day:1,n:6,part:'오후',time:'15:05',stay:'약 20분',name:'협재해수욕장 (드라이브 스톱)',parking:{lv:'pub',label:'최초 30분 무료',txt:'성수기엔 공영주차장이 유료로 전환되지만 <b>최초 30분은 무료</b>입니다. 체류를 20분으로 잡아둬서 무료 구간 안에 빠져나올 수 있습니다. 협재 4주차장이 가장 넓습니다.'},short:'협재해수욕장',crowd:'beach',crowdNote:'8월 해수욕장은 11~15시가 최고 피크입니다. 15시 도착도 아직 붐비니 주차장 진입에 시간을 조금 더 보세요.',lat:33.3943224,lng:126.2398900,kind:'spot',src:'new',
  desc:'한림해안로를 따라 내려가며 비양도 뷰. 차에서 내려 20분만 보고 중문으로 출발.',
  tips:['<b>빵귿을 넣으면서 생긴 여유분이 여기입니다</b> — 피곤하면 그냥 통과해도 무방','여유가 있으면 신창풍차해안도로까지 +25분']},
 
-{day:1,n:7,part:'늦은오후',time:'16:25',stay:'약 30분',name:'제주신라호텔 체크인',short:'신라호텔 체크인',crowd:'hotel',crowdNote:'체크인 러시는 15~17시입니다. 16:25는 한복판이라 프런트 대기가 있을 수 있고, 17시 이후면 훨씬 한산합니다.',lat:33.2473930,lng:126.4079500,kind:'hotel',src:'doc',bucket:true,
+{day:1,n:7,part:'늦은오후',time:'16:25',stay:'약 30분',name:'제주신라호텔 체크인',book:{lv:'hotel',label:'숙박 예약 완료',txt:''},parking:{lv:'free',label:'투숙객 주차',txt:'리조트 자체 주차장을 씁니다. 발렛 운영 여부는 체크인 때 확인하세요.'},short:'신라호텔 체크인',crowd:'hotel',crowdNote:'체크인 러시는 15~17시입니다. 16:25는 한복판이라 프런트 대기가 있을 수 있고, 17시 이후면 훨씬 한산합니다.',lat:33.2473930,lng:126.4079500,kind:'hotel',src:'doc',bucket:true,
  desc:'중문관광로72번길 75. 체크인 15:00부터. 짐 풀고 수영복 준비까지.',
  tips:['오늘 저녁 카바나가 있으니 방에서 수영복·가운 미리 챙겨두기','빵귿에서 산 빵은 객실 냉방에 두면 다음날 아침까지 괜찮습니다']},
 
-{day:1,n:8,part:'늦은오후',time:'17:05',stay:'약 45분',name:'바당 라운지 · 애플망고빙수 🥭',short:'바당 · 애플망고빙수',crowd:'hotel',crowdNote:'라운지는 오후 내내 비슷하게 붐빕니다. 여기서 진짜 변수는 사람 수보다 빙수 재고라, 늦을수록 소진 위험이 커집니다.',lat:33.2472,lng:126.4085,kind:'cafe',src:'doc',bucket:true,
+{day:1,n:8,part:'늦은오후',time:'17:05',stay:'약 45분',name:'바당 라운지 · 애플망고빙수 🥭',book:{lv:'walkin',label:'현장 대기',txt:'라운지는 워크인입니다. 예약보다 <b>빙수 재고</b>가 변수라 체크인 직후가 안전합니다.'},parking:{lv:'free',label:'호텔 주차장',txt:''},short:'바당 · 애플망고빙수',crowd:'hotel',crowdNote:'라운지는 오후 내내 비슷하게 붐빕니다. 여기서 진짜 변수는 사람 수보다 빙수 재고라, 늦을수록 소진 위험이 커집니다.',lat:33.2472,lng:126.4085,kind:'cafe',src:'doc',bucket:true,
  desc:'호텔 1층 라운지 “바당”. 첨부 버킷리스트의 시그니처 애플망고 빙수.',
  tips:['한정 수량이라 늦은 오후엔 소진되는 날이 많습니다 → 체크인 직후가 안전','저녁 카바나까지 텀이 있으니 이 시간이 딱']},
 
-{day:1,n:9,part:'저녁',time:'18:20',stay:'2시간 (~20:20)',name:'야외수영장 쁘띠 카바나 🏖',short:'쁘띠 카바나',crowd:'pool',crowdNote:'야간 수영 인기 시간이라 수영장 자체는 붐비지만, 카바나는 지정 예약석이라 붐빔의 영향을 거의 받지 않습니다.',lat:33.2468,lng:126.4076,kind:'hotel',src:'new',bucket:true,
+{day:1,n:9,part:'저녁',time:'18:20',stay:'2시간 (~20:20)',name:'야외수영장 쁘띠 카바나 🏖',book:{lv:'hotel',label:'선착순 예약 필수',txt:'운영 09:00~23:00이고 <b>선착순이라 조기 마감</b>됩니다. 체크인하자마자 프런트나 풀 데스크에서 18:20 슬롯을 확정하세요.'},parking:{lv:'free',label:'호텔 주차장',txt:''},short:'쁘띠 카바나',crowd:'pool',crowdNote:'야간 수영 인기 시간이라 수영장 자체는 붐비지만, 카바나는 지정 예약석이라 붐빔의 영향을 거의 받지 않습니다.',lat:33.2468,lng:126.4076,kind:'hotel',src:'new',bucket:true,
  desc:'18:20부터 이용 가능한 쁘띠 카바나 2시간 슬롯. 여기서 <b>차돌짬뽕</b>을 시켜 먹는 게 제주신라의 정석 코스입니다.',
  tips:['카바나에 앉아 차돌짬뽕 + 치킨 주문 → 버킷 “얼큰한 짬뽕” 여기서 클리어 🍜','8월 하순 일몰은 19:20 전후 — 카바나에서 바로 노을 감상 (버킷 “제주 바다 보며 힐링” 동시 해결)','2시간 33,000원선 · 시간대별 조기 마감이라 체크인 때 확정 여부 재확인','수건·가운은 풀 데스크에서 수령'],
  warn:'⏱ 17:05 빙수 → 17:50 방 복귀 → 수영복 갈아입고 18:20 입장이 딱 맞습니다. 첫날이 빠듯하면 <b>Day 2 저녁으로 옮겨도 동선에는 전혀 영향이 없습니다.</b>'},
 
-{day:1,n:10,part:'저녁',time:'20:30',stay:'자유',name:'호텔 정원 야간 산책',short:'야간 정원 산책',crowd:'walk',crowdNote:'20시 이후로 급격히 한산해집니다. 조명 켜진 정원을 사람 없이 찍기 좋은 시간대입니다.',lat:33.2481,lng:126.4069,kind:'spot',src:'new',
+{day:1,n:10,part:'저녁',time:'20:30',stay:'자유',name:'호텔 정원 야간 산책',parking:{lv:'free',label:'호텔 주차장',txt:''},short:'야간 정원 산책',crowd:'walk',crowdNote:'20시 이후로 급격히 한산해집니다. 조명 켜진 정원을 사람 없이 찍기 좋은 시간대입니다.',lat:33.2481,lng:126.4069,kind:'spot',src:'new',
  desc:'카바나 마치고 조명 켜진 정원·야자수길 한 바퀴. 사진 버킷 채우기 좋은 시간대.',
  tips:['출출하면 룸서비스로 마무리']},
 
 /* ================= DAY 2 · 8/21 (금) ================= */
-{day:2,n:1,part:'아침',time:'08:00',stay:'약 1시간',name:'더 파크뷰 조식',lat:33.2476,lng:126.4088,kind:'food',src:'new',
+{day:2,n:1,part:'아침',time:'08:00',stay:'약 1시간',name:'더 파크뷰 조식',book:{lv:'hotel',label:'시간 지정 권장',txt:'성수기 조식은 08~09시에 몰립니다. 전날 프런트에서 08:00 입장을 확인해두면 편합니다.'},parking:{lv:'free',label:'호텔 주차장',txt:''},lat:33.2476,lng:126.4088,kind:'food',src:'new',
  crowd:'hotel',crowdNote:'뷔페는 08~09시가 최고 피크입니다. 08:00 직후 입장하면 첫 회전이라 자리·음식 모두 여유롭고, 더 늦추려면 09:30 이후가 한산합니다.',
  desc:'호텔 뷔페에서 느긋하게. 오늘은 이동 최소화가 컨셉이라 서두를 필요 없습니다.',
  tips:['오픈 직후가 자리·회전율 모두 여유롭습니다']},
 
-{day:2,n:2,part:'오전',time:'09:20',stay:'약 2시간 20분',name:'야외수영장 · 정원 · 해변',lat:33.2466,lng:126.4093,kind:'hotel',src:'new',bucket:true,
+{day:2,n:2,part:'오전',time:'09:20',stay:'약 2시간 20분',name:'야외수영장 · 정원 · 해변',book:{lv:'hotel',label:'선베드 선착순',txt:'그늘 선베드는 예약이 아니라 선착순입니다. 09:20 진입이면 잡을 수 있습니다.'},parking:{lv:'free',label:'호텔 주차장',txt:''},lat:33.2466,lng:126.4093,kind:'hotel',src:'new',bucket:true,
  crowd:'pool',crowdNote:'수영장 피크는 10~12시 + 15~17시. 09:20 진입이면 피크 직전이라 그늘 선베드를 잡을 수 있습니다.',
  desc:'수영장 + 삼나무 정원 + 인피니티풀. 버킷 “제주 바다 보며 힐링하기”의 본편.',
  tips:['어제 카바나를 못 썼다면 오늘 낮 슬롯으로 대체 가능','자외선 강한 시간대라 그늘 자리 선점']},
 
-{day:2,n:3,part:'오전',time:'11:50',stay:'약 1시간',name:'두리둠비 제주중문본점',lat:33.2566854,lng:126.4146969,kind:'food',src:'kakao',
+{day:2,n:3,part:'오전',time:'11:50',stay:'약 1시간',name:'두리둠비 제주중문본점',book:{lv:'walkin',label:'현장 대기만',txt:'테이블링·캐치테이블 모두 <b>사전 예약이 안 되고 현장 대기만</b> 됩니다. 그래서 피크(12~13시) 직전인 11:50 도착으로 시간을 당겨뒀습니다. 08:00~21:00 연중무휴.'},parking:{lv:'free',label:'전용 · 넓음',txt:'매장 전용 주차장이 넓습니다.'},lat:33.2566854,lng:126.4146969,kind:'food',src:'kakao',
  crowd:'restaurant',crowdNote:'12~13시가 지수 95로 최고점입니다. 11:50 도착이면 피크 직전이라 대기가 거의 없고, 10분만 늦어도 줄이 급격히 길어집니다.',
  desc:'카톡 추천 1번. 호텔에서 차로 5분. 두부요리 + 콩국수(“콩국수 존맛”).',
  tips:['일부러 12시 전에 도착하도록 시간을 당겨 잡았습니다']},
 
-{day:2,n:4,part:'오후',time:'13:20',stay:'약 1시간 10분',name:'스타벅스 제주중문점',lat:33.2511280,lng:126.4127520,kind:'cafe',src:'doc',
+{day:2,n:4,part:'오후',time:'13:20',stay:'약 1시간 10분',name:'스타벅스 제주중문점',parking:{lv:'na',label:'확인 필요',txt:'전용 주차장 여부를 확인하지 못했습니다. 여의치 않으면 중문관광단지 공영주차장이나 바로 옆 더클리프 쪽을 이용하세요.'},lat:33.2511280,lng:126.4127520,kind:'cafe',src:'doc',
  crowd:'cafe',crowdNote:'오후 카페 피크(13~16시) 한복판이지만 좌석이 많고 회전이 빨라 체감 대기는 짧습니다. 창가 오션뷰 자리만 경쟁이 있습니다.',
  desc:'첨부 즐겨찾기. 통창 오션뷰 — 해가 강한 시간엔 실내가 정답.',
  tips:['노을·맥주 분위기를 원하면 더클리프로 대체 (아래 대안 참고)']},
 
-{day:2,n:5,part:'늦은오후',time:'15:40',stay:'약 40분',name:'중문 대포 주상절리대',lat:33.2380348,lng:126.4261426,kind:'spot',src:'doc',
+{day:2,n:5,part:'늦은오후',time:'15:40',stay:'약 40분',name:'중문 대포 주상절리대',book:{lv:'none',label:'현장 발권',txt:'매표소에서 바로 구매합니다. 예약 불필요.'},parking:{lv:'paid',label:'주차 유료',txt:'주차 요금이 있고 <b>입장료도 별도</b>(성인 2,000원선)입니다. 정확한 금액은 매표소에서 확인하세요.'},lat:33.2380348,lng:126.4261426,kind:'spot',src:'doc',
  crowd:'attraction',crowdNote:'단체관광이 몰리는 11~14시를 피해 15:40으로 잡았습니다. 이 시간대부터 지수가 확 떨어지고 빛도 사진에 좋습니다.',
  desc:'첨부 즐겨찾기. 호텔에서 7분, 동선이 짧아 더운 날에도 부담 적습니다.',
  tips:['만조·파도 있는 날이 훨씬 장관','주차장 넓음']},
 
-{day:2,n:6,part:'늦은오후',time:'17:10',stay:'약 40분',name:'중문색달해변 산책',lat:33.2451774,lng:126.4114959,kind:'spot',src:'new',
+{day:2,n:6,part:'늦은오후',time:'17:10',stay:'약 40분',name:'중문색달해변 산책',parking:{lv:'pub',label:'공영주차장',txt:'제주 지정 해수욕장 공영주차장입니다. 호텔에서 도보·셔틀로도 갈 수 있어 차를 두고 가는 편이 편합니다.'},lat:33.2451774,lng:126.4114959,kind:'spot',src:'new',
  crowd:'walk',crowdNote:'해변 산책은 18~19시 일몰 직전이 가장 붐빕니다. 17:10이면 아직 여유가 있고, 붐비는 게 싫으면 20분 더 앞당기세요.',
  desc:'호텔에서 도보/셔틀 5분. 해 지기 전 모래사장 한 바퀴.',
  tips:['호텔 정원 산책로에서 바로 연결됩니다']},
 
-{day:2,n:7,part:'저녁',time:'18:40',stay:'약 1시간 30분',name:'호텔에서 저녁',lat:33.2479,lng:126.4072,kind:'food',src:'new',
+{day:2,n:7,part:'저녁',time:'18:40',stay:'약 1시간 30분',name:'호텔에서 저녁',book:{lv:'hotel',label:'예약 권장',txt:'호텔 업장은 18~20시가 피크입니다. 당일 오전에 예약해두면 확실합니다.'},parking:{lv:'free',label:'호텔 주차장',txt:''},lat:33.2479,lng:126.4072,kind:'food',src:'new',
  crowd:'hotel',crowdNote:'호텔 업장은 18~20시가 피크입니다. 예약을 잡아두면 붐빔과 무관하게 진행됩니다.',
  desc:'이동 없이 마무리. 어제 카바나를 미뤘다면 오늘 18:20 슬롯을 여기에 그대로 끼우면 됩니다.',
  tips:['고등어회 버킷을 살리고 싶다면 오늘을 “미영이네(모슬포) 원정”으로 바꿀 수 있습니다 — 왕복 약 70분']},
 
 /* ================= DAY 3 · 8/22 (토) ================= */
-{day:3,n:1,part:'아침',time:'08:00',stay:'약 1시간 10분',name:'조식 · 마지막 아침',short:'조식',crowd:'hotel',crowdNote:'08~09시 피크. 오늘은 일정에 여유가 있으니 09:30 이후로 미뤄 한산하게 먹어도 됩니다.',lat:33.2476,lng:126.4088,kind:'food',src:'new',
+{day:3,n:1,part:'아침',time:'08:00',stay:'약 1시간 10분',name:'조식 · 마지막 아침',book:{lv:'hotel',label:'시간 지정 권장',txt:''},parking:{lv:'free',label:'호텔 주차장',txt:''},short:'조식',crowd:'hotel',crowdNote:'08~09시 피크. 오늘은 일정에 여유가 있으니 09:30 이후로 미뤄 한산하게 먹어도 됩니다.',lat:33.2476,lng:126.4088,kind:'food',src:'new',
  desc:'여유 있게. 오늘은 서쪽으로 내려갔다 북상하는 한 방향 루트라 되돌아오는 구간이 없습니다.',
  tips:['체크아웃 전에 짐 미리 정리해두면 오전이 편합니다']},
 
-{day:3,n:2,part:'오전',time:'09:20',stay:'약 1시간 20분',name:'호텔 정원 · 해변 마지막 산책',short:'마지막 산책',crowd:'walk',crowdNote:'오전 산책은 하루 중 가장 한산한 구간입니다. 빛도 좋아 사진 버킷 채우기 최적입니다.',lat:33.2470,lng:126.4098,kind:'spot',src:'new',
+{day:3,n:2,part:'오전',time:'09:20',stay:'약 50분',name:'호텔 정원 · 해변 마지막 산책',parking:{lv:'free',label:'호텔 주차장',txt:''},short:'마지막 산책',crowd:'walk',crowdNote:'오전 산책은 하루 중 가장 한산한 구간입니다. 빛도 좋아 사진 버킷 채우기 최적입니다.',lat:33.2470,lng:126.4098,kind:'spot',src:'new',
  desc:'사진 버킷 마지막 채우기. 오전 빛이 제일 좋습니다.',
  tips:['수영장은 체크아웃 후에도 이용 가능한 경우가 있으니 프런트에 확인']},
 
-{day:3,n:3,part:'오전',time:'10:45',stay:'약 15분',name:'제주신라호텔 체크아웃',short:'체크아웃',crowd:'hotel',crowdNote:'체크아웃은 11:00 정각에 몰립니다. 10:45에 나가면 프런트 줄을 피할 수 있습니다.',lat:33.2464,lng:126.4068,kind:'hotel',
- desc:'짐은 트렁크에 싣고 바로 출발. 체크아웃 10:45 / 이륙 15:40 → 가용 시간 약 4시간.',
- tips:['11시 정각보다 조금 일찍 나가면 프런트 대기가 짧습니다']},
+{day:3,n:3,part:'오전',time:'10:15',stay:'약 10분',name:'제주신라호텔 체크아웃',parking:{lv:'free',label:'호텔 주차장',txt:''},short:'체크아웃',crowd:'hotel',crowdNote:'체크아웃은 11:00 정각에 몰립니다. 10:15에 나가면 프런트 줄을 거의 만나지 않습니다.',lat:33.2464,lng:126.4068,kind:'hotel',
+ desc:'짐은 트렁크에 싣고 바로 출발. <b>선채향 줄서기 때문에 체크아웃을 10:15로 당겼습니다.</b> 이륙 15:40까지 가용 시간 약 5시간.',
+ tips:['11시 정각이 체크아웃 피크 — 10:15에 나가면 프런트 줄을 피합니다','10:25 출발 → 10:50 선채향 도착이 목표']},
 
-{day:3,n:4,part:'오전',time:'11:10',stay:'약 1시간',name:'제주선채향 본점',short:'제주선채향',crowd:'restaurant',crowdNote:'11:00 오픈 직후인 11:10 도착이라 사실상 첫 손님 구간입니다. 12시부터 지수가 95까지 올라갑니다.',lat:33.2263383,lng:126.2990878,kind:'food',src:'doc',
+{day:3,n:4,part:'오전',time:'10:50',stay:'약 1시간 10분',name:'제주선채향 본점',book:{lv:'queue',label:'테이블링 원격 줄서기',txt:'⚠️ <b>현장 줄서기 태블릿은 07:00부터</b>, <b>테이블링 앱 원격 줄서기는 11:00부터</b> 열립니다 (캐치테이블에는 미입점). 조수석에서 11:00 정각에 테이블링으로 걸어두고, 도착해서 키오스크에 번호를 입력하는 방식이 가장 안전합니다. 영업 11:00~16:00 · 월요일 휴무 · 재료 소진 시 조기 마감.'},parking:{lv:'free',label:'전용 · 넓음',txt:'넓은 전용 주차장이 있습니다. 여기는 주차보다 <b>줄서기</b>가 변수입니다.'},short:'제주선채향',crowd:'restaurant',crowdNote:'10:50 도착 → 11:00 오픈 첫 타임 입장이 목표입니다. 12시부터 지수가 95까지 올라갑니다.',lat:33.2263383,lng:126.2990878,kind:'food',src:'doc',
  desc:'첨부 즐겨찾기의 “제주선채향”. 사계리 전복 요리 전문 — 전복죽 · 전복칼국수 · 전복회.',
- tips:['11:00 오픈 → 11:10 도착이 사실상 오픈런이라 웨이팅 거의 없음','월요일 휴무로 알려져 있어 8/22(토)는 영업 (방문 전 네이버지도 재확인)','호텔에서 25분, 오늘 루트의 첫 목적지']},
+ warn:'📱 <b>여기가 오늘의 유일한 변수입니다.</b> 현장 줄서기가 07:00부터 열려 있어서 11:00 오픈 시점엔 이미 대기가 쌓여 있습니다. ① 조수석에서 <b>11:00 정각에 테이블링 원격 줄서기</b>를 걸고 ② <b>10:50에 도착해 현장 태블릿에도 등록</b>하는 이중 안전장치를 권합니다. 대기가 길면 미리 대안 핀의 미영이네(서쪽 10분)로 전환하세요.',
+ tips:['영업 11:00~16:00 · 월요일 휴무 → 8/22(토)는 영업','재료 소진 시 조기 마감이라 점심 첫 타임이 가장 안전','호텔에서 25분, 오늘 루트의 첫 목적지']},
 
-{day:3,n:5,part:'오후',time:'12:20',stay:'약 25분',name:'산방산 · 용머리해안 뷰포인트',short:'산방산 뷰포인트',crowd:'viewpoint',crowdNote:'11~13시가 정점이라 갓길 주차 자리 경쟁이 있습니다. 사진만 빠르게 찍고 이동하는 구성으로 25분만 잡았습니다.',lat:33.2314515,lng:126.3149602,kind:'spot',src:'doc',
+{day:3,n:5,part:'오후',time:'12:15',stay:'약 25분',name:'산방산 · 용머리해안 뷰포인트',parking:{lv:'street',label:'도로변 무료',txt:'사계 해안도로변 공영 주차 구역에 일렬주차합니다. 무료지만 11~13시엔 자리 경쟁이 있습니다.'},short:'산방산 뷰포인트',crowd:'viewpoint',crowdNote:'11~13시가 정점이라 갓길 주차 자리 경쟁이 있습니다. 사진만 빠르게 찍고 이동하는 구성으로 25분만 잡았습니다.',lat:33.2314515,lng:126.3149602,kind:'spot',src:'doc',
  desc:'첨부 즐겨찾기의 “산방산”. 사계 해안도로에 차 세우고 산방산+바다 배경 사진.',
  tips:['용머리해안 탐방로는 물때에 따라 통제되니 오늘은 뷰만','사계리 해안도로 갓길 주차 구역 이용']},
 
-{day:3,n:6,part:'오후',time:'12:55',stay:'약 40분',name:'원앤온리',crowd:'cafe',crowdNote:'13시부터 급격히 차오릅니다. 12:55 도착은 아슬아슬하게 피크 직전이라, 자리가 없으면 테이크아웃으로 전환하세요.',lat:33.2392344,lng:126.3192380,kind:'cafe',src:'doc',
+{day:3,n:6,part:'오후',time:'12:55',stay:'약 40분',name:'원앤온리',book:{lv:'none',label:'예약 없음',txt:''},parking:{lv:'free',label:'전용 · 넓음',txt:'매장 옆이 전부 주차장이라 주차 스트레스가 없습니다. 영업 10:00~18:30.'},crowd:'cafe',crowdNote:'13시부터 급격히 차오릅니다. 12:55 도착은 아슬아슬하게 피크 직전이라, 자리가 없으면 테이크아웃으로 전환하세요.',lat:33.2392344,lng:126.3192380,kind:'cafe',src:'doc',
  desc:'첨부 즐겨찾기. 산방산이 통창에 꽉 차는 대형 카페 — 여행 마지막 커피.',
  tips:['13:35에는 출발하세요','테이크아웃으로 받아 차에서 마셔도 좋습니다'],
  warn:'⏱ 13:35 출발 → <b>14:30 공항 도착</b>. 국내선 수속 마감(15:00)까지 약 30분 여유입니다. 더 여유를 원하면 원앤온리를 20분으로 줄이거나 생략하세요.'},
 
-{day:3,n:7,part:'오후',time:'14:30',stay:'수속 포함 1시간',name:'제주국제공항 · 렌터카 반납',short:'제주공항 · 반납',crowd:'airport',crowdNote:'오후 출발편이 몰리는 15~17시가 공항 피크입니다. 14:30 도착이면 수속 줄이 아직 감당 가능한 수준입니다.',lat:33.5058,lng:126.4948,kind:'move',
+{day:3,n:7,part:'오후',time:'14:30',stay:'수속 포함 1시간',name:'제주국제공항 · 렌터카 반납',book:{lv:'yes',label:'탑승 수속',txt:'국내선은 출발 40분 전에 수속이 마감됩니다.'},parking:{lv:'na',label:'렌터카 반납',txt:'반납 후 셔틀로 터미널로 이동합니다. 주유는 평화로 진입 전 대정·동광 쪽이 편합니다.'},short:'제주공항 · 반납',crowd:'airport',crowdNote:'오후 출발편이 몰리는 15~17시가 공항 피크입니다. 14:30 도착이면 수속 줄이 아직 감당 가능한 수준입니다.',lat:33.5058,lng:126.4948,kind:'move',
  desc:'사계 → 서부관광도로/평화로 → 공항 약 55분. 반납 셔틀 포함 14:45경 터미널 진입.',
  tips:['국내선은 출발 40분 전까지 수속 → 15:00 전 도착이면 여유','주유는 평화로 진입 전 대정·동광 쪽이 편합니다','15:40 이스타항공 제주 → 김포']},
 
@@ -1153,14 +1158,14 @@ const STOPS = [
 {day:1,alt:true,name:'신창풍차해안도로',crowd:'walk',lat:33.3427339,lng:126.1721260,kind:'spot',src:'new',
  desc:'협재에서 25분 더. 체크인을 17시로 늦출 각오가 있으면 추천.'},
 
-{day:2,alt:true,name:'미영이네 (모슬포 본점)',crowd:'restaurant',lat:33.2177090,lng:126.2497839,kind:'food',src:'doc',star:true,
+{day:2,alt:true,name:'미영이네 (모슬포 본점)',book:{lv:'walkin',label:'현장 대기',txt:'11:30 오픈 · 수요일 휴무. 오픈 직후 도착이 웨이팅 최소입니다.'},crowd:'restaurant',lat:33.2177090,lng:126.2497839,kind:'food',src:'doc',star:true,
  desc:'첨부 버킷리스트의 고등어회 집. 마지막날 루트에서 뺐으니, <b>Day 2를 “모슬포 원정”</b>으로 바꾸면 버킷을 살릴 수 있습니다. 호텔에서 왕복 약 70분, 11:30 오픈 / 수요일 휴무.'},
 {day:2,alt:true,name:'더클리프',crowd:'cafe',lat:33.2444575,lng:126.4149290,kind:'cafe',src:'doc',
  desc:'중문 해변 앞 라운지 카페. 노을 시간대에 특히 좋습니다. 스타벅스 대체.'},
 {day:2,alt:true,name:'세계자동차&피아노박물관',crowd:'museum',lat:33.2834505,lng:126.3498913,kind:'spot',src:'doc',
  desc:'첨부 즐겨찾기. 안덕 중산간, 호텔 20분. 비 오는 날 실내 대안.'},
 
-{day:3,alt:true,name:'미영이네 (모슬포 본점)',crowd:'restaurant',lat:33.2177090,lng:126.2497839,kind:'food',src:'doc',star:true,
+{day:3,alt:true,name:'미영이네 (모슬포 본점)',book:{lv:'walkin',label:'현장 대기',txt:'11:30 오픈 · 수요일 휴무. 오픈 직후 도착이 웨이팅 최소입니다.'},crowd:'restaurant',lat:33.2177090,lng:126.2497839,kind:'food',src:'doc',star:true,
  desc:'선채향 대신 되돌리고 싶을 때. 선채향에서 서쪽으로 10분이라 <b>둘 다 같은 루트 위</b>에 있습니다 (11:30 오픈).'},
 {day:3,alt:true,name:'빵귿 (소금빵)',lat:33.4871073,lng:126.5351147,kind:'cafe',src:'new',star:true,crowd:'bakery',
  desc:'집에 가져갈 빵을 <b>마지막날</b> 사고 싶다면 여기로 옮길 수 있습니다. 다만 공항에서 동쪽 15분이라 왕복 30분이 더 들고, 그만큼 원앤온리를 줄여야 합니다 (사계 13:00 출발 → 빵귿 14:10 → 공항 14:40). 비행기 시간 여유가 25분까지 줄어듭니다.'},
@@ -1192,7 +1197,7 @@ const LEGS = {
     {after:6,txt:'도보 5분'}],
  3:[{after:1,txt:'호텔 내부'},
     {after:2,txt:'프런트로 · 도보 5분'},
-    {after:3,txt:'중문 → 사계 · 약 25분 (17km)'},
+    {after:3,txt:'중문 → 사계 · 약 25분 (17km) · 10:25 출발'},
     {after:4,txt:'사계 해안도로 · 약 5분'},
     {after:5,txt:'약 5분'},
     {after:6,txt:'서부관광도로/평화로 · 약 55분 (50km)'}]
@@ -1363,6 +1368,36 @@ function wxDay(day){
   const b=BAKED_WX[date]; if(!b) return null;
   return {max:b.max,min:b.min,pop:b.pop,code:b.code,live:false};
 }
+
+
+/* ===== 주차 · 예약 ===== */
+const PK_STYLE = {
+  free  :{bg:'#e7f6ee',fg:'#2f7d4f',ico:'🅿️'},
+  pub   :{bg:'#fdf3da',fg:'#8a6d0b',ico:'🅿️'},
+  paid  :{bg:'#e6eefb',fg:'#2b4f8f',ico:'🅿️'},
+  street:{bg:'#ffede0',fg:'#b4571a',ico:'🅿️'},
+  na    :{bg:'#f2f5f8',fg:'#8b9aa8',ico:'🅿️'}
+};
+const BK_STYLE = {
+  yes   :{bg:'#e7f6f2',fg:'#0b7d6e',ico:'📅'},
+  queue :{bg:'#f2f0fe',fg:'#574bb5',ico:'📱'},
+  hotel :{bg:'#eef8f8',fg:'#0e7274',ico:'🛎'},
+  walkin:{bg:'#f2f5f8',fg:'#67788a',ico:'🚶'},
+  none  :{bg:'#f7f9fb',fg:'#a9b5c0',ico:'—'}
+};
+function chip(o,style){
+  if(!o) return '';
+  const st=style[o.lv]||style.na||style.none;
+  return `<span class="fchip2" style="background:${st.bg};color:${st.fg}">${st.ico} ${o.label}</span>`;
+}
+function factRow(o,style,kind){
+  if(!o||!o.txt) return '';
+  const st=style[o.lv]||style.na||style.none;
+  return `<p class="fact" style="border-left-color:${st.fg}"><b style="color:${st.fg}">${st.ico} ${kind} · ${o.label}</b> ${o.txt}</p>`;
+}
+const pkChip = s => chip(s.parking, PK_STYLE);
+const bkChip = s => chip(s.book, BK_STYLE);
+const factRows = s => factRow(s.parking,PK_STYLE,'주차') + factRow(s.book,BK_STYLE,'예약');
 
 /* 작은 날씨 칩 */
 function wxChip(s){
@@ -1557,6 +1592,8 @@ function cardHTML(s){
         ${s.time?`<span class="ctime">${s.time} 도착</span>`:''}
         ${s.stay?`<span class="cstay">체류 ${s.stay}</span>`:''}
         ${wxChip(s)}
+        ${pkChip(s)}
+        ${bkChip(s)}
       </div>
       <div class="cname">${s.name}</div>
       <p class="cdesc">${s.desc||''}</p>
@@ -1566,6 +1603,7 @@ function cardHTML(s){
       </div>
       ${s.tips?`<ul class="tips">${s.tips.map(t=>`<li>${t}</li>`).join('')}</ul>`:''}
       ${wxDetail(s)}
+      ${factRows(s)}
       ${crowdHTML(s)}
       ${s.warn?`<div class="warn">${s.warn}</div>`:''}
       <a class="navlink" href="${nmap(s.name)}" target="_blank" rel="noopener">📍 네이버지도</a>
@@ -1654,6 +1692,15 @@ const COVERAGE=`
     <p style="margin-top:4px">· <b>Day 1 점심을 노도고등어회로</b> (공항 5분, 가장 손실 없음) — 추천<br>
     · <b>Day 3에 선채향 대신 미영이네</b> (서로 10분 거리, 같은 루트)<br>
     · <b>Day 2를 모슬포 원정으로</b> (왕복 70분)</p>
+
+    <h4>🅿️ 주차 · 📱 예약 정보</h4>
+    <p>각 카드의 칩과 상세 줄은 네이버 블로그 후기(2025~2026년 글 위주)를 교차 확인해 정리한 것입니다. 요금·운영 방식은 성수기마다 바뀌니 <b>금액이 적힌 항목은 현장에서 한 번 더 확인</b>하세요.</p>
+    <p style="margin-top:4px">· 🟢 전용 무료 — 제주나기 · 해지개(2시간) · 두리둠비 · 선채향 · 원앤온리<br>
+    · 🟡 공영 / 부분 무료 — 빵귿 · 협재(최초 30분) · 중문색달해변<br>
+    · 🟠 갓길 · 자리 경쟁 — 사계 해안도로(산방산 뷰포인트)<br>
+    · 🔵 유료 — 대포 주상절리대 (입장료 별도)<br>
+    · ⚪ 확인 못 함 — 스타벅스 제주중문점</p>
+    <p style="margin-top:6px"><b>예약이 되는 곳은 셋뿐입니다.</b> 제주나기(네이버 예약) · 선채향(테이블링 원격 줄서기) · 호텔 업장(프런트). 두리둠비와 미영이네는 앱이 있어도 <em>현장 대기만</em> 되고, 빵귿·카페·주상절리는 예약 개념이 없습니다.</p>
 
     <h4>➕ 문서 외 추가 요청</h4>
     <p><b>빵귿</b>(제주시 이도이동 · 소금빵) — 첨부 파일에는 없던 곳으로, 별도 요청으로 <b>Day 1 오전</b>에 넣었습니다. 10:30 오픈이라 10:10 도착 항공편과 맞물리는 게 결정적이었고, 대신 나기 점심이 11:15 → 11:50으로 밀렸습니다. 마지막날에 사고 싶을 때를 위해 Day 3 대안 핀으로도 넣어뒀습니다.</p>
